@@ -12,43 +12,35 @@ class Node{
     }
 }
 
-class Main {
-    Node root;
 
-    void preOrder(Node node){
+class IterativeTraversal {
 
-        if(node == null){
-            return ;
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> list = new ArrayList<>();
+        Stack<TreeNode> st = new Stack<>();
+
+        TreeNode node = root;
+
+        while(true){
+            if(node != null){
+                st.push(node)
+                node = node.left
+            }else{
+                if(st.isEmpty()){
+                    break;
+                }
+                node = st.pop();
+                list.add(node.val);
+                node = node.right;
+            }
+
         }
-
-        System.out.print(node.data+" ");
-        preOrder(node.left);
-        preOrder(node.right);
-    }
-
-    void inOrder(Node node){
-        if(node == null){
-            return;
-        }
-
-        inOrder(node.left);
-        System.out.print(node.data + " ");
-        inOrder(node.right);
-    }
-
-    void postOrder(Node node){
-        if(node == null){
-            return;
-        }
-
-        postOrder(node.left);
-        postOrder(node.right);
-        System.out.print(node.data+" ");
+        return list;
     }
     
     public static void main(String[] args) {
         System.out.println("Creating tree");
-        Main tree = new Main();
+        IterativeTraversal tree = new IterativeTraversal();
         tree.root = new Node(1);
         tree.root.left = new Node(2);
         tree.root.right = new Node(3);
@@ -62,16 +54,5 @@ class Main {
         tree.root.right.right.left = new Node(10);
         tree.root.right.right.right = new Node(11);
         
-
-        System.out.println("Printing preorder traversal : ");
-        tree.preOrder(tree.root);
-        System.out.println();
-
-        System.out.println("Printing inorder traversal : ");
-        tree.inOrder(tree.root);
-        System.out.println();
-
-        System.out.println("Printing postorder traversal : ");
-        tree.postOrder(tree.root);
     }
 }
