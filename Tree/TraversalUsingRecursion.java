@@ -12,7 +12,7 @@ class Node{
     }
 }
 
-class Main {
+class TraversalUsingRecursion {
     Node root;
 
     void preOrder(Node node){
@@ -48,7 +48,7 @@ class Main {
     
     public static void main(String[] args) {
         System.out.println("Creating tree");
-        Main tree = new Main();
+        TraversalUsingRecursion tree = new TraversalUsingRecursion();
         tree.root = new Node(1);
         tree.root.left = new Node(2);
         tree.root.right = new Node(3);
